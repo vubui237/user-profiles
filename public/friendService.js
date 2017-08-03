@@ -3,11 +3,24 @@ angular.module('userProfiles')
   
     
     this.login = function( user ) {
-      /* FIX ME */
-    };
+      return $http({
+        method: "POST",
+        url: '/api/login',
+        data: {
+          name: user.name,
+          password: user.password
+        }
+      }).then(function(response) {
+        console.log(response);
+        return response;
+      })
+    }
 
     this.getFriends = function() {
-    	/* FIX ME */
+    	return $http.get('/api/profiles').then(function(response) {
+        console.log(response);
+        return response;
+      })
     };
   
 });
